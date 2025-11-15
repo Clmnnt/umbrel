@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   db:
     image: mariadb:10.11
@@ -37,8 +36,8 @@ services:
         "/docker-entrypoint.sh",
       ]
     ports:
-      - 8001:80
-      - 8002:443
+      - 80:80
+      - 443:443
     #Alternatively for non-root images:
     # - 80:8080
     # - 443:4433
