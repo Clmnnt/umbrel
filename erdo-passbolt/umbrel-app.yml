@@ -1,5 +1,5 @@
 manifestVersion: 1
-id: erdo-passbolt
+id: clmnnt-passbolt
 name: Passbolt
 tagline: password
 icon: https://avatars.githubusercontent.com/u/4386228?s=48&v=4
@@ -9,17 +9,16 @@ port: 8001
 description: >-
   Password Manager
 
-developer: Erdo
-website: https://umbrel.com
-submitter: Umbrel
-submission: https://github.com/getumbrel/umbrel-hello-world-app
-repo: https://github.com/getumbrel/umbrel-hello-world-app
-support: https://github.com/getumbrel/umbrel-hello-world-app/issues
+developer: Passbolt
+website: https://www.passbolt.com
+submitter: Clmnnt
+submission: https://github.com/Clmnnt/umbrel
+repo: https://github.com/Clmnnt/umbrel
+support: https://github.com/Clmnnt/umbrel
 gallery:
-  - https://i.imgur.com/yyVG0Jb.jpeg
   - https://www.passbolt.com/videos/product_tour/share_with_granularity.mp4
 releaseNotes: >-
-  Add what's new in the latest version of your app here.
+  Latest verion of Passbolt
 dependencies: []
 path: ""
 defaultUsername: ""
