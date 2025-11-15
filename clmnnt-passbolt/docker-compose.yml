@@ -11,7 +11,9 @@ services:
       - database_volume:/var/lib/mysql
 
   passbolt:
-    image: passbolt/passbolt:latest-ce
+    image: passbolt/passbolt:latest-pro
+    #Alternatively you can use rootless:
+    #image: passbolt/passbolt:latest-pro-non-root
     restart: unless-stopped
     depends_on:
       - db
@@ -24,15 +26,15 @@ services:
     volumes:
       - gpg_volume:/etc/passbolt/gpg
       - jwt_volume:/etc/passbolt/jwt
+      - ${PWD}/subscription_key.txt:/etc/passbolt/subscription_key.txt:ro
     command:
-      [
-        "/usr/bin/wait-for.sh",
-        "-t",
-        "0",
-        "db:3306",
-        "--",
-        "/docker-entrypoint.sh",
-      ]
+      - /bin/bash
+      - -c
+      - |
+        # Uncomment the below two lines if you are using ldap sync. Change '* * * * *' to your preferred sync schedule. More info: https://en.wikipedia.org/wiki/Cron
+        # touch /var/log/cron.log && chown www-data:www-data /var/log/cron.log
+        # echo '* * * * * www-data exec /bin/bash -c "source /etc/environment && /usr/share/php/passbolt/bin/cake directory_sync all --persist" >> /var/log/cron.log 2>&1' >> /etc/cron.d/passbolt-pro-server
+        /usr/bin/wait-for.sh -t 0 db:3306 -- /docker-entrypoint.sh
     ports:
       - 8001:80
       - 8002:443
